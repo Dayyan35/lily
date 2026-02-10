@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Liaa 🌙</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
+  color:white;
+  overflow-x:hidden;
+  overflow-y:auto;
+}
+
+/* PAGE SYSTEM */
+.page{
+  display:none;
+  width:100%;
+  padding:30px 15px;
+}
+
+.page.active{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+  border-radius:25px;
+  padding:35px;
+  max-width:680px;
+  width:100%;
+  text-align:center;
+  box-shadow:0 0 80px rgba(255,105,180,0.3);
+  animation:fadeIn 1.2s ease;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:2.4rem;
+  color:#ffb6c1;
+  margin-bottom:18px;
+}
+
+.subtitle{
+  font-size:1.1rem;
+  margin-bottom:22px;
+}
+
+.message{
+  font-size:1.05rem;
+  line-height:1.8;
+  margin-bottom:28px;
+}
+
+.center{
+  text-align:center;
+}
+
+/* BUTTONS */
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+button{
+  padding:14px 32px;
+  border-radius:50px;
+  border:none;
+  font-size:1rem;
+  cursor:pointer;
+  transition:all .3s ease;
+}
+
+.yes{
+  background:#ff4d6d;
+  color:white;
+  box-shadow:0 0 20px rgba(255,77,109,.8);
+}
+
+.yes:hover{
+  transform:scale(1.07);
+}
+
+.no{
+  background:rgba(255,255,255,.25);
+  color:white;
+}
+
+.no:hover{
+  opacity:.6;
+}
+
+/* GAME */
+#gameArea{
+  position:relative;
+  width:100%;
+  height:420px;
+  overflow:hidden;
+}
+
+.heart{
+  position:absolute;
+  font-size:24px;
+}
+
+#bucket{
+  position:absolute;
+  bottom:10px;
+  font-size:36px;
+}
+
+/* RUN AWAY BUTTON */
+.runaway{
+  position:relative;
+}
+
+/* IMAGE FIX */
+img{
+  width:100%;
+  max-width:100%;
+  height:auto;
+  border-radius:20px;
+  margin:25px 0;
+  display:block;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(25px);}
+  to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO -->
+<audio id="dooron" src="dooron.mp3" preload="auto"></audio>
+<audio id="radha" src="radha.mp3" preload="auto"></audio>
+
+<!-- PAGE 1 -->
+<div class="page active" id="p1">
+  <div class="card">
+    <h1>Liaa 🌙</h1>
+    <p class="subtitle">Some moments deserve their own universe.</p>
+    <p class="message">
+      I don’t believe in ordinary days anymore.<br>
+      Not since you walked into my world and made everything softer, brighter, and louder in all the right ways.<br><br>
+      So this isn’t just a question.<br>
+      It’s an invitation to a memory we’ll never forget.<br><br>
+      <b>Eiliyah Aslam will you be the valantine to Dayyan Azeem?</b>
+    </p>
+    <div class="buttons">
+      <button class="yes" onclick="startMusic(); go('p2')">Yes, Dayyan 💖</button>
+      <button class="no" onclick="alert('Nice try Liaa 💗')">No 🙈</button>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+  <div class="card">
+    <h1>It’s a Date, Liaa 💫</h1>
+    <p class="message">
+      You just made a day of the year even better.<br><br>
+      Dooriyan dilon ko kareeb laati hain, mohabbat faaslon ki mohtaj nahin.<br>
+      I wanna tell you some things, would you like to hear them?
+    </p>
+    <div class="buttons">
+      <button class="yes" onclick="go('game')">Yesssssss</button>
+      <button class="no">You don't actually have an option 😋</button>
+    </div>
+  </div>
+</div>
+
+<!-- GAME -->
+<div class="page" id="game">
+  <div class="card">
+    <p class="message">I'll tell you on one condition that is if you collect 10 hearts for 🤭.</p>
+    <div id="gameArea">
+      <div id="bucket">🧺</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONFESSION -->
+<div class="page" id="p3">
+  <div class="card">
+    <h1>Thank you so much Liaa</h1>
+    <h1>I promise I'll keep these hearts and yours with me foreverrrr 💗💗</h1>
+
+    <p class="center">
+      Ye duriyan to faqt hosh ka takaza hain,<br>
+      Mere Khayal ki dunya mein mere paas ho tum ~
+    </p><br><br>
+
+    <p class="center">Meri Liaa</p>
+
+    <p class="message">
+     I know we're too far away, and I know the distance is literally unavoidable, and maybe we'll never ever get to meet, and I know we have different casts and different believes and different perspectives and tastes in different things, and maybe my parents won't like you or parents might not like me in the future or I might not earn much or have enough money to afford a bride all the way from Portugal, but I only know for a fact that we love each other. I once said "I love loving you", you asked "is ki koi sense banti hai?", nai banti Liaa..... bilkul bhi nai banti. I love thinking about you, I love finding more about you, I love your bad pictures (it makes me feel I'm your premium), I love talking about you, I love crying for you, I love worrying about you, I love being jealous on you, I love being depressed on you, I hate waiting but I love waiting for you, I love the way you talk, I love the way you dress, I love how only I can understand some of your texts, I love that mole just below the corner of your right eye, I love your long hair, I love you brown skin color, I love your big eye which appear black in the camera but I can't wait to see them in brown when I finally meet you, I love your short height on which you're not proud of, I love your hands which seem so softer and smaller than mine, I love how you're a ghar wali ladki, I love how you get so exited on small things, I love how you're in my thoughts most of the time, I love how my texting style has become so much like yours, I love how you dress, I love making efforts for you, I love writing for you, I love how you're so me, I love just love everything single thing about you, I love loving you. And it doesn't make any damn sense you're so far away and how I'm so much in love with you. How can someone be so damn perfect? You were talking about emotional attachment the other day yes I am emotionally attached to you now. When you see this small website and this much effort you'll probably think how clingy this guy is but kya karun Liaa I love doing work that feels like a hassle just for you. About the poetry and all I'm not talanted at all I can only write on you and nothing else. Oh how bad I wanna meet you. Liaa with all that why don't we think differently? like everything that can not happen might just happen, like ye faasle khatam ho jayn, hamari shadi ho jaye and we live and we die togather. It is said ke jode aasmanon mein bante hain. Jis Rab ne Hazrat Adam (A.S) aur Amma Hawa (A.S) ko milwaya tha how can we think ke wo hamein nai milwa skta? shart ye ke We just have to be prepared to bare each other forever. I wanna be with you so much. I know I don't look good maybe I'm not your ideal type as well but no one can ever have the feelings I have for you. I don't do anything for attention I need your attention to just be on me and no one else. I'd do anything for that to happen. Liaa do you know what I learned from the past months? I learned ke insaan ko apne bebas hone ka ehsas tab hota hai jab wo kisi ko dekhne ke, liye chhoone ke liye, us se baat krne ke liye taras jata hai. I can't get you anything for valentine's I can just tell you my feelings and make this for you will you accept it?
+    </p>
+
+    <p class="center">
+      Mujhe laga the is dunya mein mere liye koi nahi hai phir bhi,<br>
+      Mujhe yakeen tha ke mujhe koi zurur mile ga,<br>
+      Hamare milne ki koi soorat nahi hai phir bhi,<br>
+      ye lag raha hai ke khuda koi mojza zurur kare ga.
+    </p><br><br>
+
+    <p class="message">Liaa will you be mine forever and ever and ever?</p>
+
+    <div class="buttons">
+      <button class="yes" onclick="switchToRadha(); go('p4')">Yess, I'm yours Dayyan 💗</button>
+      <button class="no runaway" onmouseover="run(this)">No, krlo jo krna 😝</button>
+    </div>
+  </div>
+</div>
+
+<!-- POEM -->
+<div class="page" id="p4">
+  <div class="card">
+    <h1>Happy Valentine's day 💗</h1>
+    <p class="center">
+      Jab Raat hoti hai to bas tumhari yaad hoti hai,<br>
+      Din mein Sirf tumse hi Meri shurwat hoti hai,<br>
+      Jis ghadi tumse baat hoti hai,<br>
+      Wohi ghadi meri qainat hoti hai,<br>
+      Ye dimagh Sirf khwahishon ki dukaan,<br>
+      Agr becheni mein mujhse pucho ke mujhe Kya chahye,<br>
+      Na Ghar na daulat na makaan,<br>
+      Hamein to bas aapko yaad krne ka bahana chahye,<br>
+      Hamara inse taluq bhi misaal - e - shams - o - qamar hai,<br>
+      Aik rabta musalsal aik fasla musalsal.
+    </p><br><br>
+    <button class="yes" onclick="go('last')">Aur kuch reh gaya hai?</button>
+  </div>
+</div>
+
+<!-- SECOND LAST (IMAGE FIXED) -->
+<div class="page" id="last">
+  <div class="card">
+    <h1>Thankyou so much Liaa 🌹</h1>
+    <p class="subtitle">
+      I made this collage for youuuu, you're the most beautiful woman on Earth,
+      I love you so muchh 💗💗
+    </p>
+
+    <img src="collage.jpeg" alt="Liaa collage">
+
+    <button class="yes" onclick="stopMusic(); go('end')">The End</button>
+  </div>
+</div>
+
+<!-- FINAL -->
+<div class="page" id="end">
+  <div class="card">
+    <p class="center">
+      Kehnde Zehr Vekh Ke Peeta Te Ki Peeta<br>
+      Ishq Soch Ke Kita Te Ki Kita<br>
+      Dil De Ke Dil Lainde Aas Rakhi Ve Bulleya<br>
+      Pyaar Vi Laalach Naal Kita Te Ki Kita
+    </p>
+  </div>
+</div>
+
+<script>
+let hearts=0;
+let bucket=document.getElementById("bucket");
+let area=document.getElementById("gameArea");
+
+const dooron=document.getElementById("dooron");
+const radha=document.getElementById("radha");
+
+function startMusic(){
+  dooron.volume=0.7;
+  dooron.play();
+}
+
+function switchToRadha(){
+  dooron.pause();
+  radha.volume=0.7;
+  radha.play();
+}
+
+function stopMusic(){
+  dooron.pause();
+  radha.pause();
+}
+
+function go(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+/* GAME LOGIC */
+area?.addEventListener("mousemove",e=>{
+  bucket.style.left=e.offsetX+"px";
+});
+
+area?.addEventListener("touchmove",e=>{
+  bucket.style.left=e.touches[0].clientX-40+"px";
+});
+
+setInterval(()=>{
+  if(!document.getElementById("game").classList.contains("active"))return;
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💗";
+  h.style.left=Math.random()*90+"%";
+  h.style.top="0";
+  area.appendChild(h);
+
+  let fall=setInterval(()=>{
+    h.style.top=(h.offsetTop+4)+"px";
+    if(h.offsetTop>360){h.remove();clearInterval(fall);}
+    if(h.offsetTop>330 &&
+      h.offsetLeft>bucket.offsetLeft-20 &&
+      h.offsetLeft<bucket.offsetLeft+40){
+      hearts++; h.remove(); clearInterval(fall);
+      if(hearts>=10) go("p3");
+    }
+  },20);
+},800);
+
+/* RUNAWAY BUTTON */
+function run(btn){
+  btn.style.left=Math.random()*120-60+"px";
+  btn.style.top=Math.random()*80-40+"px";
+}
+</script>
+
+</body>
+</html>
